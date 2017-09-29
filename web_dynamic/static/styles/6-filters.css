@@ -60,6 +60,13 @@
 	margin: 7px 0 3px 40px;
 }
 
+.container .filters .truncated {
+	max-width:100%;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
 /**
  * ------ POPOVER
  */
@@ -91,6 +98,11 @@
 
 .container .filters .popover li {
 	margin: 5px 0 5px 0;
+}
+
+
+.container .filters .popover input {
+	margin-right: 10px;
 }
 
 @media screen and (max-width: 600px) {
