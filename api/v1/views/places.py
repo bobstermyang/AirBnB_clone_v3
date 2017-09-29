@@ -7,6 +7,7 @@ from flask import abort, jsonify, request
 from flasgger.utils import swag_from
 from models import storage, CNC
 from os import environ
+import operator
 STORAGE_TYPE = environ.get('HBNB_TYPE_STORAGE')
 
 
