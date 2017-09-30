@@ -12,7 +12,7 @@ $(document).ready(function () {
    *
    * The truncation is done in CSS. Refer to 6-filters.css line 63
    */
-  function updateAmenityDisplay(checkedObj) {
+  function updateAmenityDisplay (checkedObj) {
     if (Object.keys(checkedObj).length === 0) {
       $('.amenities h4').html('&nbsp');
     } else {
@@ -35,11 +35,11 @@ $(document).ready(function () {
    * update the <h4> tag in amenities
    */
   $('.popover input[type=checkbox]').change(
-    function() {
-      let amenity_id = $(this).attr('data-id');
-      let amenity_name = $(this).attr('data-name');
+    function () {
+      let amenityId = $(this).attr('data-id');
+      let amenityName = $(this).attr('data-name');
       if (this.checked) {
-        checked[amenity_name] = amenity_id;
+        checked[amenityName] = amenityId;
       } else {
         delete checked[$(this).attr('data-name')];
       }
