@@ -40,10 +40,8 @@ $(document).ready(function () {
       let amenity_name = $(this).attr('data-name');
       if (this.checked) {
         checked[amenity_name] = amenity_id;
-        console.log(checked);
       } else {
         delete checked[$(this).attr('data-name')];
-        console.log(checked);
       }
       updateAmenityDisplay(checked);
     });
