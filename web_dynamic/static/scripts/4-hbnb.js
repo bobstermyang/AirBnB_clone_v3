@@ -1,5 +1,17 @@
 $(document).ready(function () {
-  let checked = {};
+  const checked = {};
+  const allUsers = {};
+
+
+  function getAllUsers() {
+    $.get("http://localhost:5001/api/v1/users/", function(data) {
+      for (let i = 0; i < data.length; i++) {
+        allUsers[data[i].id] = data[i].first_name + " " + data[i].last_name;
+      }
+    });
+  }
+
+  getAllUsers();
 
   /**
    * updateAmenityDisplay
@@ -61,19 +73,6 @@ $(document).ready(function () {
   });
 
   fetchPlaces({});
-
-  /**
-   * getUserbyID - gets a Users first and last name by ID
-   * uses promises to make async ajax calls to /api/v1/users/:id
-   *
-   * @param userId
-   * @returns {Promise.<T>}
-   */
-  function getUserbyID(userId) {
-    return Promise.resolve($.ajax({
-      url: "http://localhost:5001/api/v1/users/" + userId
-    }));
-  }
 
   /**
    * fetchPlaces - fetches amenity from backend api
@@ -148,10 +147,7 @@ $(document).ready(function () {
 
           let userInfo = $('<div>', {"class": "user",});
           article.append(userInfo);
-
-          getUserbyID(value.user_id).then(function(result) {
-            userInfo.append("<strong>" + 'Owner: ' + result.first_name + " " + result.last_name);
-          });
+          userInfo.append("<strong>" + 'Owner: ' + allUsers[value.user_id]);
 
           article.append($('<div>', {'class': 'description', 'html': value.description}));
           $('.places').append(article);
